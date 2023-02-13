@@ -1,0 +1,205 @@
+{
+    "rows": 4,
+    "columns": 4,
+    "gap": 5,
+    "view": [
+             ["Name", "Name", "Name", "Age"], 
+             ["FathersName", "FathersName", "CurrentSalaryInLPA", "Age"], 
+             ["Qualification", "Experience", "Location", "Age"],
+             ["Gender", "Designisation", "Organization", "Age"]
+            ],
+    "elements": [
+         {
+            "id": -1,
+            "element": "TextField",
+            "visible": true,
+            "name": "Name",
+            "label": "Name",
+            "type": "text",
+            "required": true,
+            "placeholder": "Name",
+            "defaultValue": "Abhishek",
+            "value": "",
+            "asPer": "", 
+            "size": "medium",
+            "rules": {
+                "minLength": { "length": 10, "errMsg": "minimun lenght is 10"},
+                "maxLenght": { "length": 10, "errMsg": "minimun lenght is 11"},
+                "regex": { "reg": "/[a-z]()/", "errMsg": "wrong pattern"}
+         }
+         },
+         {
+            "id": -2,
+            "element": "TextField",
+            "visible": true,
+            "name": "FathersName",
+            "label": "Father's Name",
+            "type": "text",
+            "required": true,
+            "placeholder": "Father's Name",
+            "defaultValue": "Abhishek",
+            "value": "",
+            "asPer": "", 
+            "size": "medium",
+            "rules": {
+                "minLength": { "length": 10, "errMsg": "minimun lenght is 10"},
+                "maxLenght": { "length": 10, "errMsg": "minimun lenght is 11"},
+                "regex": { "reg": "/[a-z]()/", "errMsg": "wrong pattern"}
+         }
+         },
+         {
+            "id": -3,
+            "element": "TextField",
+            "visible": true,
+            "name": "Qualification",
+            "label": "Qualification",
+            "type": "text",
+            "required": true,
+            "placeholder": "Qualification",
+            "defaultValue": "Abhishek",
+            "value": "",
+            "asPer": "", 
+            "size": "medium",
+            "rules": {
+                "minLength": { "length": 10, "errMsg": "minimun lenght is 10"},
+                "maxLenght": { "length": 10, "errMsg": "minimun lenght is 11"},
+                "regex": { "reg": "/[a-z]()/", "errMsg": "wrong pattern"}
+         }
+         },
+         {
+            "id": -4,
+            "element": "SingleImg",
+            "visible": true,
+            "name": "Age",
+            "label": "Age",
+            "type": "text",
+            "required": true,
+            "placeholder": "Age",
+            "defaultValue": "Abhishek",
+            "value": "",
+            "asPer": "", 
+            "size": "medium",
+            "rules": {
+                "minLength": { "length": 10, "errMsg": "minimun lenght is 10"},
+                "maxLenght": { "length": 10, "errMsg": "minimun lenght is 11"},
+                "regex": { "reg": "/[a-z]()/", "errMsg": "wrong pattern"}
+         }
+         },
+         {
+            "id": -5,
+            "element": "TextField",
+            "visible": true,
+            "name": "Gender",
+            "label": "Gender",
+            "type": "text",
+            "required": true,
+            "placeholder": "Gender",
+            "defaultValue": "Abhishek",
+            "value": "",
+            "asPer": "", 
+            "size": "medium",
+            "rules": {
+                "minLength": { "length": 10, "errMsg": "minimun lenght is 10"},
+                "maxLenght": { "length": 10, "errMsg": "minimun lenght is 11"},
+                "regex": { "reg": "/[a-z]()/", "errMsg": "wrong pattern"}
+         }
+         },
+         {
+            "id": -6,
+            "element": "TextField",
+            "visible": true,
+            "name": "Location",
+            "label": "Location",
+            "type": "text",
+            "required": true,
+            "placeholder": "Location",
+            "defaultValue": "Abhishek",
+            "value": "",
+            "asPer": "", 
+            "size": "medium",
+            "rules": {
+                "minLength": { "length": 10, "errMsg": "minimun lenght is 10"},
+                "maxLenght": { "length": 10, "errMsg": "minimun lenght is 11"},
+                "regex": { "reg": "/[a-z]()/", "errMsg": "wrong pattern"}
+         }
+         },
+         {
+            "id": -7,
+            "element": "TextField",
+            "visible": true,
+            "name": "Experience",
+            "label": "Experience",
+            "type": "text",
+            "required": true,
+            "placeholder": "Experience",
+            "defaultValue": "Abhishek",
+            "value": "",
+            "asPer": "", 
+            "size": "medium",
+            "rules": {
+                "minLength": { "length": 10, "errMsg": "minimun lenght is 10"},
+                "maxLenght": { "length": 10, "errMsg": "minimun lenght is 11"},
+                "regex": { "reg": "/[a-z]()/", "errMsg": "wrong pattern"}
+         }
+         },
+         {
+            "id": -8,
+            "element": "TextField",
+            "visible": true,
+            "name": "Designisation",
+            "label": "Designisation",
+            "type": "text",
+            "required": true,
+            "placeholder": "Designisation",
+            "defaultValue": "Abhishek",
+            "value": "",
+            "asPer": "", 
+            "size": "medium",
+            "rules": {
+                "minLength": { "length": 10, "errMsg": "minimun lenght is 10"},
+                "maxLenght": { "length": 10, "errMsg": "minimun lenght is 11"},
+                "regex": { "reg": "/[a-z]()/", "errMsg": "wrong pattern"}
+         }
+         },
+         {
+            "id": -9,
+            "element": "TextField",
+            "visible": true,
+            "name": "Organization",
+            "label": "Organization",
+            "type": "text",
+            "required": true,
+            "placeholder": "Organization",
+            "defaultValue": "Abhishek",
+            "value": "",
+            "asPer": "", 
+            "size": "medium",
+            "rules": {
+                "minLength": { "length": 10, "errMsg": "minimun lenght is 10"},
+                "maxLenght": { "length": 10, "errMsg": "minimun lenght is 11"},
+                "regex": { "reg": "/[a-z]()/", "errMsg": "wrong pattern"}
+         }
+         },
+         {
+            "id": -10,
+            "element": "TextField",
+            "visible": true,
+            "name": "CurrentSalaryInLPA",
+            "label": "Current Salary (In LPA)",
+            "type": "text",
+            "required": true,
+            "placeholder": "Current Salary (In LPA)",
+            "defaultValue": "Abhishek",
+            "value": "",
+            "asPer": "", 
+            "size": "medium",
+            "rules": {
+                "minLength": { "length": 10, "errMsg": "minimun lenght is 10"},
+                "maxLenght": { "length": 10, "errMsg": "minimun lenght is 11"},
+                "regex": { "reg": "/[a-z]()/", "errMsg": "wrong pattern"}
+         }
+         }
+    ] 
+
+
+}
