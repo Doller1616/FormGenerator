@@ -1,7 +1,7 @@
 import React from 'react';
 import Element from '../Elements/Elements';
 
-export default function FormGenerator({ elementsJson }) {
+export default function FormGenerator({ elementsJson, handleMouseOver }) {
   const { elements = [], view = [], rows, columns, gap } = elementsJson || {};
 
   
@@ -17,7 +17,7 @@ export default function FormGenerator({ elementsJson }) {
          gridTemplateRows: `repeat(${rows}, 1fr)`, 
          gridTemplateAreas: gTemplateArea,
          gap: gap}}>
-    { elements.map((config, index) => <Element key={index} properties={config} />) }
+    { elements.map((config, index) => <Element key={index} properties={config} handleMouseOver={handleMouseOver} />) }
     </div>
     </div>)
 }
