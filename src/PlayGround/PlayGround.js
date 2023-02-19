@@ -73,19 +73,35 @@ export default function PlayGround() {
     }
     else {
 
-
-
       clone.elements.forEach((comp) => {
+        const indexPos = comp.col.indexOf((Ist - 1));
         // comp.col = comp.col.map((pos)=> (pos + 1));
-        const index = comp.col.indexOf(Ist);
         // console.log('indexOf', index);
-        if (index > -1) {
-          comp.col.push((Ist + 1))
+        if (indexPos > -1) {
+            // console.log(indexPos)
+          //  const rest = comp.col.splice(indexPos, comp.col.length);
+          //  console.log(rest);
+          //  const addOne = rest.reduce((acc, v) => [...acc, v + 1], [rest.at(0)]);
+          //  console.log('>>>>>>>>>>>>>', addOne)
+          //  comp.col = [...comp.col, ...addOne];
+          // console.log(comp.col,comp.col.at(-1), indexPos);
+           comp.col = [...comp.col, (comp.col.at(-1) + 1)];
+          // console.log('OOOOOOOOOO',comp.col,comp.col.at(-1), indexPos);
+
           // for (let i = index; i < comp.col.length; i++) {
             // comp.col[i] = comp.col[i] + 1;
             // if(comp.row)
-          // }
-        }
+          } else {
+            console.log(comp.col,comp.col.at(-1), comp.label );
+            comp.col = comp.col.map((v) => v + 1);
+            // console.log(comp.col, comp.label, JSON.stringify(info.row)==JSON.stringify(comp.row) && 
+            // JSON.stringify(comp.col)==JSON.stringify(info.col));
+          }
+          // console.log(Ist -1);
+          // console.log(`${comp.col}`, info.col, comp.label, JSON.stringify(info.row)==JSON.stringify(comp.row) && 
+          // JSON.stringify(comp.col)==JSON.stringify(info.col)
+          //   );
+        // }
       });
 
 
