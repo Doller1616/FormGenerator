@@ -8,7 +8,7 @@ export const properties = (element) => {
         defaultValue : "",
         element : element,
         label : element,
-        name : initializeID --,
+        name : `${elements.TEXTFIELD}${initializeID --}`,
         placeholder : element,
         required : false,
         rules : null,

@@ -12,7 +12,7 @@ export default function PlayGround() {
   let dragFinish = {
     info: null,
     target: <a />,
-    side: '' 
+    side: ''
   }
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function PlayGround() {
     deco.view = generateView(formConfig);
     setFormConfig(deco)
   }, [])
-  
+
 
   const generateView = (formConfig) => {
     const elements = formConfig.elements;
@@ -28,7 +28,7 @@ export default function PlayGround() {
     elements.forEach(element => {
       element.row.forEach((r) => {
         element.col.forEach((c) => {
-          xR[r][c] = element.name
+          xR[r][c] = element.name;
         })
       })
     });
@@ -50,31 +50,53 @@ export default function PlayGround() {
     console.log('Start', event);
   }
 
-  const handleDragEnd = ({target}) => {
+  const handleDragEnd = ({ target }) => {
     cssprop.forEach((e) => dragFinish.target.style.removeProperty(e));
     (dragFinish.side === LEFT) && addElementInLeft(dragFinish, target);
   }
 
-  const addElementInLeft = ({ info }, target) => {      
-      const element = target.getAttribute('value');
-      const clone = window.structuredClone(formConfig);
-      const newElement = properties(element);
-      const [Ist] =  info.col || [];
-      console.log(Ist)
-      // if(Ist == 0) {
-      //   // to reset column of all element in the JSON 
-      //   clone?.elements?.forEach((comp) => {
-      //     comp.col = comp.col.map((pos)=> (pos + 1));
-      //   });
-      //   // to create new element
-      //   newElement.col = [0];
-      //   newElement.row = info.row;
-      //   clone?.elements?.push(newElement);
-      // }else {
-      //   console.log(clone, newElement)
-      // }
+  const addElementInLeft = ({ info }, target) => {
+    const element = target.getAttribute('value');
+    const clone = window.structuredClone(formConfig);
+    const newElement = properties(element);
+    const [Ist] = info.col || [];
+    // console.log('first', Ist);
+    if (Ist == 0) {
+      // to reset column of all element in the JSON 
+      clone.elements.forEach((comp) => {
+        comp.col = comp.col.map((pos) => (pos + 1));
+      });
+      // to create new element
+      newElement.col = [0];
+      newElement.row = info.row;
+      clone.columns = clone.columns + 1;
+    }
+    else {
 
-      // formConfig.elements.push()
+
+
+      clone.elements.forEach((comp) => {
+        // comp.col = comp.col.map((pos)=> (pos + 1));
+        const index = comp.col.indexOf(Ist);
+        // console.log('indexOf', index);
+        if (index > -1) {
+          comp.col.push((Ist + 1))
+          // for (let i = index; i < comp.col.length; i++) {
+            // comp.col[i] = comp.col[i] + 1;
+            // if(comp.row)
+          // }
+        }
+      });
+
+
+      newElement.col = [Ist];
+      newElement.row = info.row;
+      clone.columns = clone.columns + 1;
+    }
+    clone.elements.push(newElement);
+    clone.view = generateView(clone)
+    console.log(clone);
+    setFormConfig(clone)
   }
 
   const handleMouseOver = (event, args) => {
