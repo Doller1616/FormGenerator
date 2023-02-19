@@ -1,22 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Layout, Row } from 'antd';
 import FormGenerator from '../FormGenerator/FormGenerator';
-import formConfig from '../formConfig.json';
-
-const sides = {
-  LEFT: "left",
-  RIGHT: "right",
-  TOP: "top",
-  Bottom: "bottom",
-};
+import formConfigJSON from '../formConfig.json';
+import { elements, properties, sides } from '../constants';
+const { TEXTFIELD } = elements;
+const { Bottom, LEFT, RIGHT, TOP } = sides;
 
 export default function PlayGround() {
   const cssprop = ['border-top', 'border-right', 'border-bottom', 'border-left'];
+  const [formConfig, setFormConfig] = useState(formConfigJSON)
   let dragFinish = {
-    delatis: null,
+    info: null,
     target: <a />,
     side: '' 
   }
+
+  useEffect(() => {
+    const deco = window.structuredClone(formConfig);
+    deco.view = generateView(formConfig);
+    setFormConfig(deco)
+  }, [])
+  
 
   const generateView = (formConfig) => {
     const elements = formConfig.elements;
@@ -46,9 +50,31 @@ export default function PlayGround() {
     console.log('Start', event);
   }
 
-  const handleDragEnd = (event) => {
+  const handleDragEnd = ({target}) => {
     cssprop.forEach((e) => dragFinish.target.style.removeProperty(e));
-    console.log('End', dragFinish);
+    (dragFinish.side === LEFT) && addElementInLeft(dragFinish, target);
+  }
+
+  const addElementInLeft = ({ info }, target) => {      
+      const element = target.getAttribute('value');
+      const clone = window.structuredClone(formConfig);
+      const newElement = properties(element);
+      const [Ist] =  info.col || [];
+      console.log(Ist)
+      // if(Ist == 0) {
+      //   // to reset column of all element in the JSON 
+      //   clone?.elements?.forEach((comp) => {
+      //     comp.col = comp.col.map((pos)=> (pos + 1));
+      //   });
+      //   // to create new element
+      //   newElement.col = [0];
+      //   newElement.row = info.row;
+      //   clone?.elements?.push(newElement);
+      // }else {
+      //   console.log(clone, newElement)
+      // }
+
+      // formConfig.elements.push()
   }
 
   const handleMouseOver = (event, args) => {
@@ -71,25 +97,25 @@ export default function PlayGround() {
     // Column left
     if (Left) {
       event.target.style.borderLeft = '4px solid red';
-      dragFinish.side = sides.LEFT;
-      dragFinish.delatis = args;
+      dragFinish.side = LEFT;
+      dragFinish.info = args;
     }// Column right
     else if (Right) {
       event.target.style.borderRight = '4px solid red';
-      dragFinish.side = sides.RIGHT;
-      dragFinish.delatis = args;
+      dragFinish.side = RIGHT;
+      dragFinish.info = args;
     } // Row top
     else if (Top) {
       event.target.style.borderTop = '4px solid red';
-      dragFinish.side = sides.TOP;
-      dragFinish.delatis = args;
+      dragFinish.side = TOP;
+      dragFinish.info = args;
     } // Bottom
     else if (Bottom) {
       event.target.style.borderBottom = '4px solid red';
-      dragFinish.side = sides.Bottom;
-      dragFinish.delatis = args;
+      dragFinish.side = Bottom;
+      dragFinish.info = args;
     } else {
-      dragFinish.delatis = null;
+      dragFinish.info = null;
     }
     dragFinish.target = event.target;
   }
@@ -98,12 +124,11 @@ export default function PlayGround() {
     cssprop.forEach((e) => event.target.style.removeProperty(e));
   }
 
-  const deco = window.structuredClone(formConfig);
-  deco.view = generateView(formConfig);
   return (<Layout >
     <Row>
       <Col span={6} style={{ backgroundColor: 'yellowgreen', textAlign: 'center' }}>
-        <div onMouseOver={handleMouseOverElement} draggable
+        <div value={TEXTFIELD}
+          onMouseOver={handleMouseOverElement} draggable
           onMouseLeave={handleMouseLeaveElement}
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
@@ -113,7 +138,7 @@ export default function PlayGround() {
       </Col>
       <Col span={18} style={{ backgroundColor: 'gray' }}>
         <div className='drop-area' >
-          <FormGenerator elementsJson={deco} handleMouseOver={handleMouseOver} handleMouseLeave={handleMouseLeave} />
+          <FormGenerator elementsJson={formConfig} handleMouseOver={handleMouseOver} handleMouseLeave={handleMouseLeave} />
         </div>
       </Col>
     </Row>
