@@ -60,6 +60,7 @@ export default function PlayGround() {
     const clone = window.structuredClone(formConfig);
     const newElement = properties(element);
     const [Ist] = info.col || [];
+    console.log(info);
     // console.log('first', Ist);
     if (Ist == 0) {
       // to reset column of all element in the JSON 
@@ -70,25 +71,11 @@ export default function PlayGround() {
       newElement.col = [0];
       newElement.row = info.row;
       clone.columns = clone.columns + 1;
-    }
-    else {
-      clone.elements.forEach((comp) => {
-        const indexPos = comp.col.indexOf((Ist - 1));
-        if (indexPos > -1) {
-          comp.col = [...comp.col, (comp.col.at(-1) + 1)];
-        } else {
-          const [Ist] = comp.col
-          if (Ist > 0) {
-            comp.col = comp.col.map((v) => v + 1);
-          }
-        }
-      });
-
-
-      newElement.col = [Ist];
+    } else {
+      newElement.col = [0];
       newElement.row = info.row;
-      clone.columns = clone.columns + 1;
     }
+    
     clone.elements.push(newElement);
     clone.view = generateView(clone)
     console.log(clone);
